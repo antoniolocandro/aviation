@@ -2,17 +2,31 @@ __author__ = 'Antonio.Locandro'
 '''
 Copyright (c) 2015 can't be used without authorization
 '''
+import os
 from pykml import parser
 import csv
+import Tkinter
+root = Tkinter.Tk()
+root.withdraw()
+from tkFileDialog import *
 
-out = raw_input('Name for output file: ')+'.csv'
+
+kml_file = askopenfilename(title="Radar Track KML file",initialfile='*.kml')
+
+bname = os.path.splitext((os.path.basename(kml_file)))[0].rsplit('_dat',1)[0]
+bpath = os.path.dirname(kml_file)
+#print bname
+#print bpath
+
+#out = raw_input('Name for output file: ')+'.csv'
+out = bpath+'/csv/'+bname +'.csv'
 
 out_file = open(out,'wb')
 csv_writer = csv.writer(out_file,quoting=csv.QUOTE_MINIMAL)
 
 out_data = []
 
-kml_file = 'C://erase//tst//MCA200715_dat_kmlplot.kml'
+#kml_file = 'C://erase//tst//MCA200715_dat_kmlplot.kml'
 
 root = parser.fromstring(open(kml_file,'r').read())
 
