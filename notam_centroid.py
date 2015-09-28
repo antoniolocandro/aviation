@@ -1,4 +1,5 @@
 __author__ = 'Antonio Locandro'
+#!python2
 '''
 Script only works for Central America FIR (FIR MHTG) due to hard coded values
 '''
@@ -10,7 +11,7 @@ from math import ceil
 
 print "Calculating NOTAM radius of influence\n"
 
-pl = Polygon([(-88.666667, 17.15), (-88.633333, 17.166667),(-88.65,17.133333)])
+pl = Polygon([(-88.5666666666666, 17.2), (-88.55, 17.25),(-88.4666666666666,17.3),(-88.45,17.3),(-88.45,17.2)])
 
 vl = pl.centroid
 
@@ -43,4 +44,4 @@ for v in list(pl.exterior.coords):
 
 radius = int(ceil(max(rl)))
 
-print 'NOTAM Coordinates and Radius\n%s%sE%03d'%(dd_dmsY(y)[0],dd_dmsX(x)[0],radius)
+print 'NOTAM Coordinates and Radius\n%s%s%03d'%(dd_dmsY(y)[0],dd_dmsX(x)[0],radius)
