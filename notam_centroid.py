@@ -4,13 +4,35 @@ Script only works for Central America FIR (FIR MHTG) due to hard coded values
 '''
 
 # import required modules
+import os
+import csv
+import Tkinter
+root = Tkinter.Tk()
+root.withdraw()
+from tkFileDialog import *
+
 from shapely.geometry import Polygon
 from geopy.distance import vincenty
 from math import ceil
+from shapely.wkt import dumps, loads
+
+
+csv_file = askopenfilename(title="csv for radius of influence calculation",initialfile='*.csv')
+
+cvr = "Polygon(("
+
+with open(csv_file, 'rb') as csvfile:
+    csv_read = csv.reader(csvfile, delimiter=',', quotechar='|')
+    next(csv_read, None)
+    for row in csv_read:
+        cvr+=""+row[9]+" "+row[8]+","
+
+pl = loads (cvr.rstrip(",")+"))")
+
+#debug print
+#print pl
 
 print "Calculating NOTAM radius of influence\n"
-
-pl = Polygon([(-88.666667, 17.15), (-88.633333, 17.166667),(-88.65,17.133333)])
 
 vl = pl.centroid
 
@@ -43,4 +65,4 @@ for v in list(pl.exterior.coords):
 
 radius = int(ceil(max(rl)))
 
-print 'NOTAM Coordinates and Radius\n%s%sE%03d'%(dd_dmsY(y)[0],dd_dmsX(x)[0],radius)
+print 'NOTAM Coordinates and Radius\n%s%s%03d'%(dd_dmsY(y)[0],dd_dmsX(x)[0],radius)
