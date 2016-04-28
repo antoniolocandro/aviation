@@ -10,7 +10,7 @@ url = raw_input('enter url  ')
 page = urllib2.urlopen(url).read()
 
 
-soup = BeautifulSoup(page,'lxml')
+soup = BeautifulSoup(page,'html.parser')
 
 flight_airline = soup.title.text.replace(u'\u2708',",").split(',')[1].strip(' ')
 flight_date = soup.title.text.replace(u'\u2708',",").split(',')[2].strip(' ')
