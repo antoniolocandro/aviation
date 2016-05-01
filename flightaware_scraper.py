@@ -2,7 +2,7 @@ import urllib2
 import re
 import csv
 from bs4 import BeautifulSoup
-AD = 'MROC'
+AD = 'MZBZ'
 #url= 'http://flightaware.com/live/flight/SWA827/history/20151213/2020Z/KHOU/MZBZ/tracklog'
 
 url = raw_input('enter url  ')
