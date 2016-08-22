@@ -24,8 +24,8 @@ table = soup.find_all("tr", { "class" : re.compile(r"^smallrow1|smallrow2")})
 bpath ="C://erase/antopy"
 bname = flight_destination+'_'+flight_date+'_'+flight_airline
 
-#out = bpath+'/'+AD+'/csv/'+bname +'.csv'
-out = bpath+'/csv/'+bname +'.csv'
+out = bpath+'/'+AD+'/csv/2016/08/'+bname +'.csv'
+#out = bpath+'/csv/'+bname +'.csv'
 
 out_file = open(out,'wb')
 csv_writer = csv.writer(out_file,quoting=csv.QUOTE_MINIMAL)
@@ -39,7 +39,7 @@ for row in table:
 
         if len(cells) ==10 and cells[7].text.encode('utf-8') is not '':
 
-            j = '%i,%s,%f,%f,%s,%f,%f,%s'%(count,cells[0].text.encode('utf-8'),float(cells[1].text.encode('utf-8')),float(cells[2].text.encode('utf-8')),cells[4].text.encode('utf-8'),float(cells[5].text.encode('utf-8')),float(cells[6].text.encode('utf-8')),float(cells[7].text.encode('utf-8').replace(',','')))
+            j = '%i,%s,%f,%f,%s,%s,%s,%s'%(count,cells[0].text.encode('utf-8'),float(cells[1].text.encode('utf-8')[:7]),float(cells[2].text.encode('utf-8')[:8]),cells[4].text.encode('utf-8'),(cells[5].text.encode('utf-8')),(cells[6].text.encode('utf-8')),float(cells[7].text.encode('utf-8').replace(',','')[:len(cells[7].text.encode('utf-8'))/2]))
 
             print j
             out_data.append(j.split(','))
@@ -47,6 +47,7 @@ for row in table:
         else:
             pass
             #print cells[7].text
+            #print "2"
 
 for row in out_data:
     csv_writer.writerow(row)

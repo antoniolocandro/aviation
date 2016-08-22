@@ -106,7 +106,7 @@ map_osm.simple_marker ([y2, x2],popup='NOTAM Centroid and Radius of Influence\n%
 #print notam_line
 map_osm.line(notam_line, line_color='#FF0000', line_weight=3)
 map_osm.line(cnotam, line_color='#3186cc', line_weight=10)
-map_osm.create_map(path='C:\\Users\\Antonio\\Desktop\\notam_radius.html')
+map_osm.create_map(path='C:\\Users\\antonio.locandro\\Desktop\\notam_radius.html')
 
-url = "C:\\Users\\Antonio\\Desktop\\notam_radius.html"
-webbrowser.open(url,new=1)
+url = "C:\\Users\\antonio.locandro\\Desktop\\notam_radius.html"
+webbrowser.get().open(url,new=1)
