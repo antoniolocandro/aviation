@@ -2,7 +2,7 @@ import urllib2
 import re
 import csv
 from bs4 import BeautifulSoup
-AD = 'MZBZ'
+AD = 'MNMG'
 #url= 'http://flightaware.com/live/flight/SWA827/history/20151213/2020Z/KHOU/MZBZ/tracklog'
 
 url = raw_input('enter url  ')
@@ -24,7 +24,7 @@ table = soup.find_all("tr", { "class" : re.compile(r"^smallrow1|smallrow2")})
 bpath ="C://erase/antopy"
 bname = flight_destination+'_'+flight_date+'_'+flight_airline
 
-out = bpath+'/'+AD+'/csv/2016/08/'+bname +'.csv'
+out = bpath+'/'+AD+'/csv/2017/06/'+bname +'.csv'
 #out = bpath+'/csv/'+bname +'.csv'
 
 out_file = open(out,'wb')
